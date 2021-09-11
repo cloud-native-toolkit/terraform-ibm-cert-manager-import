@@ -1,14 +1,12 @@
-name: ""
+name: ibm-cert-manager-cert
 type: terraform
-description: ""
+description: Module to upload and/or retrieve a certificate and private key from IBM Certificate Manager
 tags:
-    - tools
-    - devops
+    - ibm
+    - certificate manager
+    - certificate
 versions:
-- platforms:
-    - kubernetes
-    - ocp3
-    - ocp4
+- platforms: []
   dependencies: []
 #    - id: cluster
 #      refs:
