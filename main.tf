@@ -17,3 +17,9 @@ data ibm_certificate_manager_certificate cert {
   certificate_manager_instance_id = var.cert_manager_id
   name                            = var.name
 }
+
+resource null_resource print_output {
+  provisioner "local-exec" {
+    command = "echo '${jsonencode(data.ibm_certificate_manager_certificate.cert.certificate_details)}'"
+  }
+}
