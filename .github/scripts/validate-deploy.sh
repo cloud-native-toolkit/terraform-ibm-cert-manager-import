@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
-# Verify the database has been provisioned?
+PRIVATE_KEY=$(cat .private_key)
+CERT=$(cat .cert)
 
-if [[ -n "${IBMCLOUD_API_KEY}" ]]; then
-  echo "IBM Cloud api key provided"
-else
-  echo "IBM Cloud api key not provided"
+if [[ -z "${PRIVATE_KEY}" ]]; then
+  echo "Private key is missing"
+  exit 1
+fi
+
+if [[ -z "${CERT}" ]]; then
+  echo "Certificate is missing"
+  exit 1
 fi
