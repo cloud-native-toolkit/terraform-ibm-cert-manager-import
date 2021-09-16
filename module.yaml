@@ -10,7 +10,7 @@ versions:
   providers:
     - name: ibm
       source: ibm-cloud/ibm
-  dependencies: []
+  dependencies:
     - id: cert_manager
       refs:
         - source: github.com/cloud-native-toolkit/terraform-ibm-cert-manager
