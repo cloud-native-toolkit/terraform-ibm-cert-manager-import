@@ -3,38 +3,7 @@ name: ibm-cert-manager-cert
 type: terraform
 description: Module to upload and/or retrieve a certificate and private key from IBM Certificate Manager
 tags:
-    - ibm
-    - certificate manager
-    - certificate
-versions:
-- platforms: []
-  providers:
-    - name: ibm
-      source: ibm-cloud/ibm
-  dependencies:
-    - id: cert_manager
-      refs:
-        - source: github.com/cloud-native-toolkit/terraform-ibm-cert-manager
-          version: ">= 1.0.0"
-    - id: cert
-      refs:
-        - source: github.com/cloud-native-toolkit/terraform-util-sealed-secret-cert
-          version: ">= 1.0.0"
-      optional: true
-  variables: []
-    - name: cert_manager_id
-      moduleRef:
-        id: cert_manager
-        output: id
-    - name: cert
-      moduleRef:
-        id: cert
-        output: cert
-    - name: cert
-      moduleRef:
-        id: cert
-        output: private_key
-    - name: ibmcloud_api_key
-      scope: global
-    - name: region
-      scope: global
+  - ibm
+  - certificate manager
+  - certificate
+versions: {}
