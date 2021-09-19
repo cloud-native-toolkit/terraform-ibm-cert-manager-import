@@ -48,7 +48,6 @@ jobs:
           IBMCLOUD_API_KEY: ${{ secrets.IBMCLOUD_API_KEY }}
 
   verifyMetadata:
-    needs: verify
     runs-on: ubuntu-latest
 
     env:
@@ -79,7 +78,7 @@ jobs:
           ajv test -s module.json -d ${{ env.DIST_DIR }}/index.yaml --valid
 
   release:
-    needs: verifyMetadata
+    needs: [verify, verifyMetadata]
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
 
