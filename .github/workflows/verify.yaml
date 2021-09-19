@@ -79,7 +79,6 @@ jobs:
           ajv test -s module.json -d ${{ env.DIST_DIR }}/index.yaml --valid
 
   release:
-    #    if: ${{ github.event_name == 'push' }}
     needs: verifyMetadata
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
