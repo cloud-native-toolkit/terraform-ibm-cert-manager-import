@@ -29,7 +29,7 @@ versions:
       moduleRef:
         id: cert
         output: cert
-    - name: cert
+    - name: private_key
       moduleRef:
         id: cert
         output: private_key
