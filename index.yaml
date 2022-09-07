@@ -1,9 +1,258 @@
-id: github.com/cloud-native-toolkit/terraform-ibm-cert-manager-cert
+id: github.com/terraform-ibm-modules/terraform-ibm-toolkit-cert-manager-cert
 name: ibm-cert-manager-cert
 type: terraform
-description: Module to upload and/or retrieve a certificate and private key from IBM Certificate Manager
+description: >-
+  Module to upload and/or retrieve a certificate and private key from IBM
+  Certificate Manager
 tags:
   - ibm
   - certificate manager
   - certificate
-versions: [{platforms: [], providers: [{name: ibm, source: ibm-cloud/ibm}], dependencies: [{id: cert_manager, refs: [{source: github.com/cloud-native-toolkit/terraform-ibm-cert-manager, version: ">= 1.0.0"}]}, {id: cert, refs: [{source: github.com/cloud-native-toolkit/terraform-util-sealed-secret-cert, version: ">= 1.0.0"}], optional: true}], variables: [{name: cert_manager_id, moduleRef: {id: cert_manager, output: id}, type: string, description: The id of the certificate manager instance}, {name: cert, moduleRef: {id: cert, output: cert}, type: string, description: The value for the certificate that will be imported, default: "", optional: true}, {name: private_key, moduleRef: {id: cert, output: private_key}, type: string, description: The private key for the certificate that will be imported, default: "", optional: true}, {name: name, type: string, description: The name of the certificate}, {name: provision, type: bool, description: Flag indicating that the certificate should be provisioned. If false the certificate will be looked up, default: true, optional: true}], version: v1.1.0, outputs: [{name: private_key, description: 'output "private_key" {   value = data.ibm_certificate_manager_certificate.cert.certificate_details[0].data.priv_key   sensitive = true }'}, {name: cert, description: 'output "cert" {   value = data.ibm_certificate_manager_certificate.cert.certificate_details[0].data.content }'}]}, {platforms: [], providers: [{name: ibm, source: ibm-cloud/ibm}], dependencies: [{id: cert_manager, refs: [{source: github.com/cloud-native-toolkit/terraform-ibm-cert-manager, version: ">= 1.0.0"}]}, {id: cert, refs: [{source: github.com/cloud-native-toolkit/terraform-util-sealed-secret-cert, version: ">= 1.0.0"}], optional: true}], variables: [{name: cert_manager_id, moduleRef: {id: cert_manager, output: id}, type: string, description: The id of the certificate manager instance}, {name: cert, moduleRef: {id: cert, output: cert}, type: string, description: The value for the certificate that will be imported, default: "", optional: true}, {name: private_key, moduleRef: {id: cert, output: private_key}, type: string, description: The private key for the certificate that will be imported, default: "", optional: true}, {name: ibmcloud_api_key, scope: global, type: string, description: The api key for IBM Cloud access}, {name: region, scope: global, type: string, description: 'Geographic location of the resource (e.g. us-south, us-east)'}, {name: name, type: string, description: The name of the certificate}, {name: provision, type: bool, description: Flag indicating that the certificate should be provisioned. If false the certificate will be looked up, default: true, optional: true}], version: v1.0.4, outputs: [{name: private_key, description: 'output "private_key" {   value = data.ibm_certificate_manager_certificate.cert.certificate_details[0].data.priv_key   sensitive = true }'}, {name: cert, description: 'output "cert" {   value = data.ibm_certificate_manager_certificate.cert.certificate_details[0].data.content }'}]}, {platforms: [], providers: [{name: ibm, source: ibm-cloud/ibm}], dependencies: [{id: cert_manager, refs: [{source: github.com/cloud-native-toolkit/terraform-ibm-cert-manager, version: ">= 1.0.0"}]}, {id: cert, refs: [{source: github.com/cloud-native-toolkit/terraform-util-sealed-secret-cert, version: ">= 1.0.0"}], optional: true}], variables: [{name: cert_manager_id, moduleRef: {id: cert_manager, output: id}, type: string, description: The id of the certificate manager instance}, {name: cert, moduleRef: {id: cert, output: cert}, type: string, description: The value for the certificate that will be imported, default: "", optional: true}, {name: cert, moduleRef: {id: cert, output: private_key}, type: string, description: The value for the certificate that will be imported, default: "", optional: true}, {name: ibmcloud_api_key, scope: global, type: string, description: The api key for IBM Cloud access}, {name: region, scope: global, type: string, description: 'Geographic location of the resource (e.g. us-south, us-east)'}, {name: name, type: string, description: The name of the certificate}, {name: provision, type: bool, description: Flag indicating that the certificate should be provisioned. If false the certificate will be looked up, default: true, optional: true}, {name: private_key, type: string, description: The private key for the certificate that will be imported, default: "", optional: true}], version: v1.0.3, outputs: [{name: private_key, description: 'output "private_key" {   value = data.ibm_certificate_manager_certificate.cert.certificate_details[0].data.priv_key   sensitive = true }'}, {name: cert, description: 'output "cert" {   value = data.ibm_certificate_manager_certificate.cert.certificate_details[0].data.content }'}]}]
+versions:
+  - platforms: []
+    providers:
+      - name: ibm
+        source: ibm-cloud/ibm
+    dependencies:
+      - id: cert_manager
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-ibm-cert-manager
+            version: '>= 1.0.0'
+      - id: cert
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-util-sealed-secret-cert
+            version: '>= 1.0.0'
+        optional: true
+    variables:
+      - name: cert_manager_id
+        type: string
+        description: The id of the certificate manager instance
+        moduleRef:
+          id: cert_manager
+          output: id
+      - name: name
+        type: string
+        description: The name of the certificate
+      - name: provision
+        type: bool
+        description: >-
+          Flag indicating that the certificate should be provisioned. If false
+          the certificate will be looked up
+        default: true
+      - name: cert
+        type: string
+        description: The value for the certificate that will be imported
+        default: ''
+        moduleRef:
+          id: cert
+          output: cert
+      - name: private_key
+        type: string
+        description: The private key for the certificate that will be imported
+        default: ''
+        moduleRef:
+          id: cert
+          output: private_key
+    version: v1.1.1
+    outputs:
+      - name: private_key
+        sensitive: true
+      - name: cert
+  - platforms: []
+    providers:
+      - name: ibm
+        source: ibm-cloud/ibm
+    dependencies:
+      - id: cert_manager
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-ibm-cert-manager
+            version: '>= 1.0.0'
+      - id: cert
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-util-sealed-secret-cert
+            version: '>= 1.0.0'
+        optional: true
+    variables:
+      - name: cert_manager_id
+        moduleRef:
+          id: cert_manager
+          output: id
+        type: string
+        description: The id of the certificate manager instance
+      - name: cert
+        moduleRef:
+          id: cert
+          output: cert
+        type: string
+        description: The value for the certificate that will be imported
+        default: ''
+        optional: true
+      - name: private_key
+        moduleRef:
+          id: cert
+          output: private_key
+        type: string
+        description: The private key for the certificate that will be imported
+        default: ''
+        optional: true
+      - name: name
+        type: string
+        description: The name of the certificate
+      - name: provision
+        type: bool
+        description: >-
+          Flag indicating that the certificate should be provisioned. If false
+          the certificate will be looked up
+        default: true
+        optional: true
+    version: v1.1.0
+    outputs:
+      - name: private_key
+        description: >-
+          output "private_key" {   value =
+          data.ibm_certificate_manager_certificate.cert.certificate_details[0].data.priv_key  
+          sensitive = true }
+      - name: cert
+        description: >-
+          output "cert" {   value =
+          data.ibm_certificate_manager_certificate.cert.certificate_details[0].data.content
+          }
+  - platforms: []
+    providers:
+      - name: ibm
+        source: ibm-cloud/ibm
+    dependencies:
+      - id: cert_manager
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-ibm-cert-manager
+            version: '>= 1.0.0'
+      - id: cert
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-util-sealed-secret-cert
+            version: '>= 1.0.0'
+        optional: true
+    variables:
+      - name: cert_manager_id
+        moduleRef:
+          id: cert_manager
+          output: id
+        type: string
+        description: The id of the certificate manager instance
+      - name: cert
+        moduleRef:
+          id: cert
+          output: cert
+        type: string
+        description: The value for the certificate that will be imported
+        default: ''
+        optional: true
+      - name: private_key
+        moduleRef:
+          id: cert
+          output: private_key
+        type: string
+        description: The private key for the certificate that will be imported
+        default: ''
+        optional: true
+      - name: ibmcloud_api_key
+        scope: global
+        type: string
+        description: The api key for IBM Cloud access
+      - name: region
+        scope: global
+        type: string
+        description: Geographic location of the resource (e.g. us-south, us-east)
+      - name: name
+        type: string
+        description: The name of the certificate
+      - name: provision
+        type: bool
+        description: >-
+          Flag indicating that the certificate should be provisioned. If false
+          the certificate will be looked up
+        default: true
+        optional: true
+    version: v1.0.4
+    outputs:
+      - name: private_key
+        description: >-
+          output "private_key" {   value =
+          data.ibm_certificate_manager_certificate.cert.certificate_details[0].data.priv_key  
+          sensitive = true }
+      - name: cert
+        description: >-
+          output "cert" {   value =
+          data.ibm_certificate_manager_certificate.cert.certificate_details[0].data.content
+          }
+  - platforms: []
+    providers:
+      - name: ibm
+        source: ibm-cloud/ibm
+    dependencies:
+      - id: cert_manager
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-ibm-cert-manager
+            version: '>= 1.0.0'
+      - id: cert
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-util-sealed-secret-cert
+            version: '>= 1.0.0'
+        optional: true
+    variables:
+      - name: cert_manager_id
+        moduleRef:
+          id: cert_manager
+          output: id
+        type: string
+        description: The id of the certificate manager instance
+      - name: cert
+        moduleRef:
+          id: cert
+          output: cert
+        type: string
+        description: The value for the certificate that will be imported
+        default: ''
+        optional: true
+      - name: cert
+        moduleRef:
+          id: cert
+          output: private_key
+        type: string
+        description: The value for the certificate that will be imported
+        default: ''
+        optional: true
+      - name: ibmcloud_api_key
+        scope: global
+        type: string
+        description: The api key for IBM Cloud access
+      - name: region
+        scope: global
+        type: string
+        description: Geographic location of the resource (e.g. us-south, us-east)
+      - name: name
+        type: string
+        description: The name of the certificate
+      - name: provision
+        type: bool
+        description: >-
+          Flag indicating that the certificate should be provisioned. If false
+          the certificate will be looked up
+        default: true
+        optional: true
+      - name: private_key
+        type: string
+        description: The private key for the certificate that will be imported
+        default: ''
+        optional: true
+    version: v1.0.3
+    outputs:
+      - name: private_key
+        description: >-
+          output "private_key" {   value =
+          data.ibm_certificate_manager_certificate.cert.certificate_details[0].data.priv_key  
+          sensitive = true }
+      - name: cert
+        description: >-
+          output "cert" {   value =
+          data.ibm_certificate_manager_certificate.cert.certificate_details[0].data.content
+          }
