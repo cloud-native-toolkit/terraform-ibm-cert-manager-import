@@ -1,5 +1,7 @@
 # IBM Certificate Manager Certificate module
 
+## ⚠️ This module is deprecated and the repo has been archived because the IBM Cloud Certificate Manager service is no longer supported.
+
 Module to upload a certificate and private key into IBM Certificate Manager and/or retrieve the certificate and private key to provide as output. If the **provision** variable is `true`, then **cert** and **private_key** are required and they will be uploaded as a new certificate in Certificate Manager. If **provision** is `false`, then the **cert** and **private_key** values will be retrieved from Certificate Manager.
 
 ## Software dependencies
